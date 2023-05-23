@@ -1,14 +1,19 @@
 const { Router } = require('express');
 
+const ensureAuthenticated = require('../app/middlewares/auth/ensureAuthenticated');
 const multer = require('../app/middlewares/multer');
 
 const UserController = require('../app/controllers/UserController');
 
 const route = Router();
 
-route.get('/users', UserController.index);
-route.get('/users/show/:id', UserController.show);
-route.get('/users/show/:id/recipes', UserController.showUserRecipes);
+route.get('/', UserController.index);
+
+route.get('/show/:id', UserController.show);
+
+route.get('/show/:id/recipes', UserController.showUserRecipes);
+
+route.use(ensureAuthenticated);
 
 route.put('/:id', UserController.update);
 
