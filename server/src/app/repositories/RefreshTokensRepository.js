@@ -1,14 +1,8 @@
 const { query } = require('../../database');
 
 class RefreshTokensRepository {
-  async findByToken(token) {
-    const [row] = await query('SELECT * FROM refresh_tokens WHERE token = $1', [token]);
-
-    return row;
-  }
-
-  async findByUserId({ user_id }) {
-    const [row] = await query('SELECT * FROM refresh_tokens WHERE user_id = $1', [user_id]);
+  async findByUserId(user_id) {
+    const [row] = await query('SELECT id FROM refresh_tokens WHERE user_id = $1', [user_id]);
 
     return row;
   }

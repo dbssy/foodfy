@@ -75,9 +75,7 @@ class UsersRepository {
     return row;
   }
 
-  async update(id, {
-    name, email, admin,
-  }) {
+  async update(id, { name, email, admin }) {
     const [row] = await query(`
       UPDATE users
       SET name = $1, email = $2, admin = $3

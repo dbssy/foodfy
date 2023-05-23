@@ -67,17 +67,13 @@ class UserController {
       return res.status(400).json({ error: 'Todos os campos devem ser preenchidos' });
     }
 
-    const emailAlreadyExists = await UsersRepository.findByEmail(email);
+    const emailAlreadyExists = await UsersRepository.findByUserEmail(email);
 
     if (emailAlreadyExists && emailAlreadyExists.id !== id) {
       return res.status(400).json({ error: 'Esse e-mail já está em uso' });
     }
 
-    const user = await UsersRepository.update(id, {
-      name,
-      email,
-      admin,
-    });
+    const user = await UsersRepository.update(id, { name, email, admin });
 
     delete user.password;
 
@@ -87,7 +83,7 @@ class UserController {
   async updatePassword(req, res) {
     const { id } = req.params;
 
-    const { currentPassword, newPassword, confirmPassword } = req.body;
+    const { current_password, new_password, confirm_password } = req.body;
 
     if (!isValidUUID(id)) {
       return res.status(400).json({ error: 'O ID do usuário é inválido' });
@@ -103,21 +99,21 @@ class UserController {
       return res.status(400).json({ error: 'Todos os campos devem ser preenchidos' });
     }
 
-    const matchedPassword = await compare(currentPassword, user.password);
+    const matchedPassword = await compare(current_password, user.password);
 
     if (!matchedPassword) {
       return res.status(400).json({ error: 'A senha atual está incorreta' });
     }
 
-    if (newPassword.length < 3) {
+    if (new_password.length < 3) {
       return res.status(400).json({ error: 'A senha deve conter pelo menos 3 caracteres' });
     }
 
-    if (newPassword !== confirmPassword) {
+    if (new_password !== confirm_password) {
       return res.status(400).json({ error: 'A senha não corresponde à confirmação de senha' });
     }
 
-    const hashedPassword = await hash(newPassword, 8);
+    const hashedPassword = await hash(new_password, 8);
 
     const updatedUser = await UsersRepository.updatePassword(id, {
       password: hashedPassword,
@@ -173,7 +169,7 @@ class UserController {
 
     const { avatar_url } = await UsersRepository.findImageById(id);
 
-    const avatarFile = '../../../tmp/imagesdefaultAvatar.png';
+    const avatarFile = '../../../tmp/images/defaultAvatar.png';
     const defaultAvatar = avatarFile.replace('../../../tmp/images', '');
 
     if (!avatar_url.includes('defaultAvatar')) {
