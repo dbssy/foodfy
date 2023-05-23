@@ -25,7 +25,7 @@ module.exports = async (req, res, next) => {
       return res.status(401).json({ error: 'O seu token é inválido' });
     }
 
-    const user = await UsersRepository.findById(userId);
+    const user = await UsersRepository.findByUserId(userId);
 
     if (!user) {
       return res.status(401).json({ error: 'O seu token é inválido' });

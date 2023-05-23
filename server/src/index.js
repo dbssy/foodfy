@@ -6,6 +6,8 @@ require('dotenv').config();
 const cors = require('./app/middlewares/cors');
 const errorHandler = require('./app/middlewares/errorHandler');
 
+const routes = require('./routes');
+
 const EnvConfig = require('./config/envConfig');
 
 const app = express();
@@ -13,6 +15,7 @@ const app = express();
 app.use(cors);
 app.use(express.json());
 app.use('/images', express.static(path.resolve(__dirname, '../tmp/images')));
+app.use(routes);
 app.use(errorHandler);
 
 app.listen(EnvConfig.port, () => console.log(`🔥 Server started at ${EnvConfig.host}:${EnvConfig.port}`));
