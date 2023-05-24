@@ -5,6 +5,8 @@ import UsersService from '@/services/UsersService';
 
 import useSafeAsyncAction from '@/hooks/useSafeAsyncAction';
 
+import toast from '@/utils/toast';
+
 export default function useAuthenticatedUser() {
   const [token, setToken] = useState(null);
   const [userId, setUserId] = useState(null);
@@ -26,6 +28,11 @@ export default function useAuthenticatedUser() {
     } catch {
       localStorage.removeItem('token');
       localStorage.removeItem('userId');
+
+      toast({
+        type: 'danger',
+        text: 'Erro ao decodificar o token',
+      });
 
       return false;
     }
@@ -58,7 +65,10 @@ export default function useAuthenticatedUser() {
           setIsLoading(false);
         });
       } catch (error) {
-        throw new Error(error.message);
+        toast({
+          type: 'danger',
+          text: `${error.message}`,
+        });
       }
     }
 

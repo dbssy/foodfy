@@ -7,6 +7,8 @@ import AuthServices from '@/services/AuthService';
 import useAuthenticatedUser from '@/hooks/useAuthenticatedUser';
 import useSafeAsyncAction from '@/hooks/useSafeAsyncAction';
 
+import toast from '@/utils/toast';
+
 export const AuthContext = createContext({});
 
 export default function AuthProvider({ children }) {
@@ -26,10 +28,19 @@ export default function AuthProvider({ children }) {
 
         safeAsyncAction(() => {
           setAuthenticated(true);
-          navigate('/signin');
+
+          navigate('/');
+
+          toast({
+            type: 'success',
+            text: 'Seja bem-vindo(a) ao Foodfy!',
+          });
         });
       } catch (error) {
-        throw new Error(error.message);
+        toast({
+          type: 'danger',
+          text: `${error.message}`,
+        });
       }
     },
 
@@ -42,10 +53,19 @@ export default function AuthProvider({ children }) {
 
         safeAsyncAction(() => {
           setAuthenticated(true);
+
           navigate('/');
+
+          toast({
+            type: 'default',
+            text: 'Seja bem vindo(a) de volta!',
+          });
         });
       } catch (error) {
-        throw new Error(error.message);
+        toast({
+          type: 'danger',
+          text: `${error.message}`,
+        });
       }
     },
 
@@ -60,10 +80,19 @@ export default function AuthProvider({ children }) {
 
         safeAsyncAction(() => {
           setAuthenticated(false);
+
           navigate('/');
+
+          toast({
+            type: 'success',
+            text: 'Você deslogou com sucesso, volte sempre!',
+          });
         });
       } catch (error) {
-        throw new Error(error.message);
+        toast({
+          type: 'danger',
+          text: `${error.message}`,
+        });
       }
     },
 
