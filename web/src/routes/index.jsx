@@ -4,6 +4,7 @@ import Home from '@/pages/Home';
 import About from '@/pages/About';
 
 import SignUp from '@/pages/SignUp';
+import SignIn from '@/pages/SignIn';
 
 export default function Router() {
   return (
@@ -12,6 +13,7 @@ export default function Router() {
       <Route path="/about" element={<About />} />
 
       <Route path="/signup" element={<SignUp />} />
+      <Route path="/signin" element={<SignIn />} />
     </Routes>
   );
 }

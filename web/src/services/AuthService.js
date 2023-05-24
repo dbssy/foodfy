@@ -19,7 +19,7 @@ class AuthServices {
   signIn(user) {
     const body = UserMapper.toPersistence(user);
 
-    return this.httpClient.withJSON('/signup', {
+    return this.httpClient.withJSON('/signin', {
       method: 'POST',
       body,
     });

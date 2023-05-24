@@ -19,7 +19,7 @@ class UsersService {
       signal,
     });
 
-    return user.map(UserMapper.toDomain);
+    return UserMapper.toDomain(user);
   }
 }
 
