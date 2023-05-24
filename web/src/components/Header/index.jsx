@@ -5,7 +5,7 @@ import { Container } from './styles';
 
 import logo from '@/assets/logo.svg';
 
-import { AuthContext } from '@/context/AuthContext';
+import { AuthContext } from '@/contexts/AuthContext';
 
 import Button from '@/components/Button';
 

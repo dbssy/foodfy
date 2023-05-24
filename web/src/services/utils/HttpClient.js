@@ -46,6 +46,14 @@ class HttpClient {
     });
   }
 
+  withJSON(path, options) {
+    return this.makeRequest(path, {
+      method: options?.method,
+      headers: options?.headers,
+      body: JSON.stringify(options?.body),
+    });
+  }
+
   async makeRequest(path, options) {
     await delay(500);
 

@@ -19,6 +19,7 @@ class UserMapper {
       password: persistenceUser?.password,
       admin: persistenceUser.admin,
       avatarUrl: persistenceUser.avatar_url,
+      totalRecipes: persistenceUser?.total_recipes,
       token: persistenceUser?.token,
     };
   }

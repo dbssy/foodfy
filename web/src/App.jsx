@@ -5,7 +5,7 @@ import defaultTheme from '@/styles/themes/default';
 import GlobalStyles from '@/styles/global';
 import { Container } from '@/styles/App.styles';
 
-import AuthProvider from '@/context/AuthContext';
+import AuthProvider from '@/contexts/AuthContext';
 
 import ToastContainer from '@/components/Toast/ToastContainer';
 import Header from '@/components/Header';
