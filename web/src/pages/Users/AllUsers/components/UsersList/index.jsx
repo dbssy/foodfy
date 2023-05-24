@@ -25,6 +25,7 @@ export default function UsersList({ users }) {
               />
 
               <h4>{user.name}</h4>
+
               {user.totalRecipes > 0 && (
                 <p>
                   {user.totalRecipes > 1
