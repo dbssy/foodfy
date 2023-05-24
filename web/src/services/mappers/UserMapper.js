@@ -7,6 +7,7 @@ class UserMapper {
       password: domainUser?.password,
       admin: domainUser.admin,
       avatar_url: domainUser.avatarUrl,
+      token: domainUser?.token,
     };
   }
 
@@ -18,6 +19,7 @@ class UserMapper {
       password: persistenceUser?.password,
       admin: persistenceUser.admin,
       avatarUrl: persistenceUser.avatar_url,
+      token: persistenceUser?.token,
     };
   }
 }

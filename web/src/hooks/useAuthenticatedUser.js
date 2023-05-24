@@ -58,7 +58,7 @@ export default function useAuthenticatedUser() {
           setIsLoading(false);
         });
       } catch (error) {
-        throw new Error(`${error.message}`);
+        throw new Error(error.message);
       }
     }
 
