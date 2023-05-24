@@ -7,8 +7,10 @@ import { Container } from '@/styles/App.styles';
 
 import AuthProvider from '@/context/AuthContext';
 
-import Header from '@/components/Header';
 import ToastContainer from '@/components/Toast/ToastContainer';
+import Header from '@/components/Header';
+
+import Router from '@/routes';
 
 export default function App() {
   return (
@@ -20,6 +22,7 @@ export default function App() {
 
           <Container>
             <Header />
+            <Router />
           </Container>
         </AuthProvider>
       </ThemeProvider>
