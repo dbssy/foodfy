@@ -8,6 +8,7 @@ import { Container } from '@/styles/App.styles';
 import AuthProvider from '@/context/AuthContext';
 
 import Header from '@/components/Header';
+import ToastContainer from '@/components/Toast/ToastContainer';
 
 export default function App() {
   return (
@@ -15,6 +16,7 @@ export default function App() {
       <ThemeProvider theme={defaultTheme}>
         <AuthProvider>
           <GlobalStyles />
+          <ToastContainer />
 
           <Container>
             <Header />
