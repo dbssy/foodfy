@@ -12,6 +12,15 @@ class UsersService {
 
     return users.map(UserMapper.toDomain);
   }
+
+  async getCurrentUser(token, signal) {
+    const user = await this.httpClient.get('/me', {
+      headers: { Authorization: `Bearer ${token}` },
+      signal,
+    });
+
+    return user.map(UserMapper.toDomain);
+  }
 }
 
 export default new UsersService();
