@@ -6,6 +6,8 @@ import About from '@/pages/About';
 import SignUp from '@/pages/SignUp';
 import SignIn from '@/pages/SignIn';
 
+import AllUsers from '@/pages/Users/AllUsers';
+
 export default function Router() {
   return (
     <Routes>
@@ -14,6 +16,8 @@ export default function Router() {
 
       <Route path="/signup" element={<SignUp />} />
       <Route path="/signin" element={<SignIn />} />
+
+      <Route path="/users" element={<AllUsers />} />
     </Routes>
   );
 }
