@@ -48,6 +48,22 @@ class UserController {
     return res.json(recipes);
   }
 
+  async me(req, res) {
+    const { userId } = req;
+
+    if (!isValidUUID(userId)) {
+      return res.status(400).json({ error: 'O ID do Usuário é inválido' });
+    }
+
+    const user = await UsersRepository.findByUserId(userId);
+
+    if (!user) {
+      return res.status(404).json({ error: 'Usuário não encontrado' });
+    }
+
+    return res.json(user);
+  }
+
   async update(req, res) {
     const { id } = req.params;
 

@@ -15,6 +15,8 @@ route.get('/show/:id/recipes', UserController.showUserRecipes);
 
 route.use(ensureAuthenticated);
 
+route.get('/me', UserController.me);
+
 route.put('/:id', UserController.update);
 
 route.patch('/password/:id', UserController.updatePassword);
