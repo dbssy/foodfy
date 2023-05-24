@@ -7,6 +7,8 @@ import { Container } from '@/styles/App.styles';
 
 import AuthProvider from '@/context/AuthContext';
 
+import Header from '@/components/Header';
+
 export default function App() {
   return (
     <BrowserRouter>
@@ -15,7 +17,7 @@ export default function App() {
           <GlobalStyles />
 
           <Container>
-            Hello World
+            <Header />
           </Container>
         </AuthProvider>
       </ThemeProvider>
