@@ -40,7 +40,7 @@ export default function RecipesList({ recipes, pageSize = 8 }) {
         {filteredRecipes.map((recipe) => (
           <Card key={recipe.id}>
             <Link to={`/recipes/show/${recipe.id}`}>
-              <img src={`http://localhost:3333/images/${recipe.image_url}`} alt={recipe.title} />
+              <img src={`http://localhost:3333/images/${recipe.imageUrl}`} alt={recipe.title} />
             </Link>
 
             <div className="info">
@@ -48,7 +48,7 @@ export default function RecipesList({ recipes, pageSize = 8 }) {
               <p>
                 enviado por {' '}
 
-                <Link to={`/users/show/${recipe.user_id}`}>
+                <Link to={`/users/show/${recipe.userId}`}>
                   {recipe.author}
                 </Link>
               </p>
@@ -72,8 +72,8 @@ RecipesList.propTypes = {
     id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     author: PropTypes.string.isRequired,
-    image_url: PropTypes.string.isRequired,
-    user_id: PropTypes.string.isRequired,
+    imageUrl: PropTypes.string.isRequired,
+    userId: PropTypes.string.isRequired,
   })).isRequired,
   pageSize: PropTypes.number,
 };
