@@ -13,6 +13,7 @@ export default function useRecipeForm(onSubmit, ref) {
   const [instructions, setInstructions] = useState([]);
   const [file, setFile] = useState(null);
   const [image, setImage] = useState('');
+  const [recipeUserId, setRecipeUserId] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const { userId } = useAuthenticatedUser();
@@ -45,6 +46,7 @@ export default function useRecipeForm(onSubmit, ref) {
       setIngredients(recipe.ingredients ?? []);
       setInstructions(recipe.instructions ?? []);
       setImage(recipe.imageUrl ?? '');
+      setRecipeUserId(recipe.userId ?? null);
     },
   }), []);
 
@@ -145,6 +147,7 @@ export default function useRecipeForm(onSubmit, ref) {
 
     const formattedIngredients = JSON.stringify(ingredients).replace(/\[/g, '{').replace(/\]/g, '}');
     const formattedInstructions = JSON.stringify(instructions).replace(/\[/g, '{').replace(/\]/g, '}');
+    const user_id = recipeUserId !== userId ? recipeUserId : userId;
 
     if (file) {
       const formData = new FormData();
@@ -157,7 +160,7 @@ export default function useRecipeForm(onSubmit, ref) {
       formData.append('ingredients', formattedIngredients);
       formData.append('instructions', formattedInstructions);
       formData.append('image_url', file);
-      formData.append('user_id', userId);
+      formData.append('user_id', user_id);
 
       await onSubmit(formData);
     } else {
@@ -169,8 +172,7 @@ export default function useRecipeForm(onSubmit, ref) {
         servings,
         ingredients: formattedIngredients,
         instructions: formattedInstructions,
-        image,
-        userId,
+        user_id,
       });
     }
 

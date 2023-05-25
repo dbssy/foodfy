@@ -12,6 +12,7 @@ import ShowUser from '@/pages/Users/ShowUser';
 import AllRecipes from '@/pages/Recipes/AllRecipes';
 import ShowRecipe from '@/pages/Recipes/ShowRecipe';
 import NewRecipe from '@/pages/Recipes/NewRecipe';
+import EditRecipe from '@/pages/Recipes/EditRecipe';
 
 import PrivateRoute from '@/routes/PrivateRoute';
 
@@ -35,6 +36,15 @@ export default function Router() {
         element={(
           <PrivateRoute>
             <NewRecipe />
+          </PrivateRoute>
+        )}
+      />
+
+      <Route
+        path="/recipes/edit/:id"
+        element={(
+          <PrivateRoute>
+            <EditRecipe />
           </PrivateRoute>
         )}
       />

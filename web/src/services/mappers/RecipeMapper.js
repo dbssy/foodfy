@@ -10,7 +10,7 @@ class RecipeMapper {
       ingredients: domainRecipe.ingredients,
       instructions: domainRecipe.instructions,
       image_url: domainRecipe?.file || domainRecipe?.image,
-      user_id: domainRecipe.userId,
+      user_id: domainRecipe.user_id,
     };
   }
 
