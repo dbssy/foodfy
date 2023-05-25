@@ -12,6 +12,18 @@ class RecipesService {
 
     return recipes.map(RecipeMapper.toDomain);
   }
+
+  async getRecipeById(id, signal) {
+    const recipe = await this.httpClient.get(`/show/${id}`, { signal });
+
+    return RecipeMapper.toDomain(recipe);
+  }
+
+  deleteRecipe(id, token) {
+    return this.httpClient.delete(`/${id}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+  }
 }
 
 export default new RecipesService();

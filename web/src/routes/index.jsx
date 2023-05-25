@@ -10,6 +10,7 @@ import AllUsers from '@/pages/Users/AllUsers';
 import ShowUser from '@/pages/Users/ShowUser';
 
 import AllRecipes from '@/pages/Recipes/AllRecipes';
+import ShowRecipe from '@/pages/Recipes/ShowRecipe';
 
 export default function Router() {
   return (
@@ -24,6 +25,7 @@ export default function Router() {
       <Route path="/users/show/:id" element={<ShowUser />} />
 
       <Route path="/recipes" element={<AllRecipes />} />
+      <Route path="/recipes/show/:id" element={<ShowRecipe />} />
     </Routes>
   );
 }
