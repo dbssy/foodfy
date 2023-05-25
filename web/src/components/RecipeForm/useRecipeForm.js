@@ -1,6 +1,6 @@
-/* eslint-disable max-len */
 import { useImperativeHandle, useState } from 'react';
 
+import useAuthenticatedUser from '@/hooks/useAuthenticatedUser';
 import useErrors from '@/hooks/useErrors';
 
 export default function useRecipeForm(onSubmit, ref) {
@@ -9,11 +9,13 @@ export default function useRecipeForm(onSubmit, ref) {
   const [difficulty, setDifficulty] = useState('');
   const [prepTime, setPrepTime] = useState(0);
   const [servings, setServings] = useState(0);
-  const [ingredients, setIngredients] = useState(['']);
-  const [instructions, setInstructions] = useState(['']);
+  const [ingredients, setIngredients] = useState([]);
+  const [instructions, setInstructions] = useState([]);
   const [file, setFile] = useState(null);
   const [image, setImage] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const { userId } = useAuthenticatedUser();
 
   const {
     errors,
@@ -22,18 +24,27 @@ export default function useRecipeForm(onSubmit, ref) {
     getErrorMessageByFieldName,
   } = useErrors();
 
-  const isFormValid = (title && description && difficulty && prepTime && servings && ingredients && instructions && errors.length === 0);
+  const isFormValid = (
+    title
+    && description
+    && difficulty
+    && prepTime
+    && servings
+    && ingredients.length > 0
+    && instructions.length > 0
+    && errors.length === 0
+  );
 
   useImperativeHandle(ref, () => ({
     setFieldsValues: (recipe) => {
       setTitle(recipe.title ?? '');
       setDescription(recipe.description ?? '');
       setDifficulty(recipe.difficulty ?? '');
-      setPrepTime(recipe.prep_time ?? 0);
+      setPrepTime(recipe.prepTime ?? 0);
       setServings(recipe.servings ?? 0);
-      setIngredients(recipe.ingredients ?? ['']);
-      setInstructions(recipe.instructions ?? ['']);
-      setImage(recipe.image_url ?? '');
+      setIngredients(recipe.ingredients ?? []);
+      setInstructions(recipe.instructions ?? []);
+      setImage(recipe.imageUrl ?? '');
     },
   }), []);
 
@@ -146,6 +157,7 @@ export default function useRecipeForm(onSubmit, ref) {
       formData.append('ingredients', formattedIngredients);
       formData.append('instructions', formattedInstructions);
       formData.append('image_url', file);
+      formData.append('user_id', userId);
 
       await onSubmit(formData);
     } else {
@@ -158,6 +170,7 @@ export default function useRecipeForm(onSubmit, ref) {
         ingredients: formattedIngredients,
         instructions: formattedInstructions,
         image,
+        userId,
       });
     }
 

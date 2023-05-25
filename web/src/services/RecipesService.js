@@ -19,6 +19,23 @@ class RecipesService {
     return RecipeMapper.toDomain(recipe);
   }
 
+  createRecipe(recipe, token) {
+    if (recipe instanceof FormData) {
+      return this.httpClient.post('/', {
+        headers: { Authorization: `Bearer ${token}` },
+        body: recipe,
+      });
+    }
+
+    const body = RecipeMapper.toPersistence(recipe);
+
+    return this.httpClient.withJSON('/', {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${token}` },
+      body,
+    });
+  }
+
   deleteRecipe(id, token) {
     return this.httpClient.delete(`/${id}`, {
       headers: { Authorization: `Bearer ${token}` },
