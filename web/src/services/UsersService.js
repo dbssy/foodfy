@@ -35,6 +35,39 @@ class UsersService {
     return UserMapper.toDomain(user);
   }
 
+  updateUser(id, user, token) {
+    const body = UserMapper.toPersistence(user);
+
+    return this.httpClient.withJSON(`/${id}`, {
+      method: 'PUT',
+      headers: { Authorization: `Bearer ${token}` },
+      body,
+    });
+  }
+
+  updatePassword(id, password, token) {
+    const body = UserMapper.toPersistence(password);
+
+    return this.httpClient.withJSON(`/password/${id}`, {
+      method: 'PATCH',
+      headers: { Authorization: `Bearer ${token}` },
+      body,
+    });
+  }
+
+  updateAvatar(id, avatar, token) {
+    return this.httpClient.patch(`/avatar/${id}`, {
+      headers: { Authorization: `Bearer ${token}` },
+      body: avatar,
+    });
+  }
+
+  deleteAvatar(id, token) {
+    return this.httpClient.delete(`/avatar/${id}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+  }
+
   deleteUser(id, token) {
     return this.httpClient.delete(`/${id}`, {
       headers: { Authorization: `Bearer ${token}` },

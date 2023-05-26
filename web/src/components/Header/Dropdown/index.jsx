@@ -23,7 +23,7 @@ export default function Dropdown({ onSignOut }) {
       <DropdownMenu.Portal>
         <Content sideOffset={5}>
           <Item>
-            <Link to="/profile/me">Meu perfil</Link>
+            <Link to={`/users/edit/${user?.id}`}>Meu perfil</Link>
           </Item>
 
           <Item>

@@ -8,6 +8,7 @@ import SignIn from '@/pages/SignIn';
 
 import AllUsers from '@/pages/Users/AllUsers';
 import ShowUser from '@/pages/Users/ShowUser';
+import EditUser from '@/pages/Users/EditUser';
 
 import AllRecipes from '@/pages/Recipes/AllRecipes';
 import ShowRecipe from '@/pages/Recipes/ShowRecipe';
@@ -27,6 +28,15 @@ export default function Router() {
 
       <Route path="/users" element={<AllUsers />} />
       <Route path="/users/show/:id" element={<ShowUser />} />
+
+      <Route
+        path="/users/edit/:id"
+        element={(
+          <PrivateRoute>
+            <EditUser />
+          </PrivateRoute>
+        )}
+      />
 
       <Route path="/recipes" element={<AllRecipes />} />
       <Route path="/recipes/show/:id" element={<ShowRecipe />} />
