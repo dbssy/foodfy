@@ -120,13 +120,13 @@ class RecipeController {
 
     const { image_url } = await RecipesRepository.findImageById(id);
 
-    if (!image_url.includes('defaultRecipe') && image !== image_url) {
-      const imageFile = path.resolve(__dirname, '../../../tmp/images', `${image_url}`);
+    if (image && image !== null) {
+      if (image !== image_url && !image_url.includes('defaultRecipe')) {
+        const imageFile = path.resolve(__dirname, '../../../tmp/images', `${image_url}`);
 
-      unlinkSync(imageFile);
-    }
+        unlinkSync(imageFile);
+      }
 
-    if (image) {
       const updateRecipe = await RecipesRepository.update(id, {
         title,
         description,
