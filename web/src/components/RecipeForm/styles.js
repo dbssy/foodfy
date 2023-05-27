@@ -12,6 +12,16 @@ export const Form = styled.form`
     margin-bottom: 2rem;
     padding-bottom: 2rem;
   }
+
+  @media screen and (max-width: 769px) {
+    width: 80%;
+
+    header {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+  }
 `;
 
 export const Section = styled.section`
@@ -116,6 +126,25 @@ export const Section = styled.section`
         &.remove {
           color: ${({ theme }) => theme.colors.gray[500]};
           margin: 1rem 0;
+        }
+      }
+    }
+
+    @media screen and (max-width: 895px) {
+      .three-columns,
+      .two-columns {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .ingredients,
+      .instructions {
+        border-top: 2px solid ${({ theme }) => theme.colors.gray[100]};
+        margin-top: 2rem;
+        padding-top: 2rem;
+
+        label {
+          font-weight: bold;
         }
       }
     }

@@ -81,5 +81,9 @@ export const Avatar = styled.div`
         border-color: ${({ theme }) => theme.colors.danger[900]};
       }
     }
+
+    @media screen and (max-width: 730px) {
+      flex-direction: column;
+    }
   }
 `;

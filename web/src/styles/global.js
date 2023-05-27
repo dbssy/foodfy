@@ -10,6 +10,7 @@ export default createGlobalStyle`
 
   body {
     background: ${({ theme }) => theme.colors.background};
+    overflow-x: hidden;
   }
 
   body, input, textarea, select, button {

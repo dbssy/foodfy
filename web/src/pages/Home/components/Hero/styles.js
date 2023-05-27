@@ -4,6 +4,7 @@ import background from '@/assets/images/hero-background.jpg';
 
 export const Container = styled.section`
   background: url(${background}) no-repeat;
+  background-position: center center;
   color: ${({ theme }) => theme.colors.white};
   border-radius: 0.5rem;
   width: 100%;
@@ -33,6 +34,15 @@ export const Container = styled.section`
       &:hover {
         opacity: 0.8;
         transform: translateX(0.5rem);
+      }
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 500px) {
+      width: 70%;
+      font-size: 1rem;
+
+      h1 {
+        font-size: 2rem;
       }
     }
   }

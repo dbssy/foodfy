@@ -9,8 +9,8 @@ export default function Hero() {
       <div>
         <h1>Escolha entre milhares <br /> de receitas</h1>
         <p>
-          Saboreie uma receita inesquecível, que <br />
-          despertarão memórias gustativas únicas.
+          Saboreie uma receita inesquecível, <br />
+          que despertará memórias gustativas únicas.
         </p>
 
         <Link to="/recipes">Explorar <ArrowRight size={24} /></Link>

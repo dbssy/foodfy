@@ -40,7 +40,7 @@ export default function ShowRecipe() {
             </div>
 
             {canEditOrDelete && (
-              <>
+              <div className="actions">
                 <Link to={`/recipes/edit/${recipe.id}`}>Editar receita</Link>
 
                 <button
@@ -61,7 +61,7 @@ export default function ShowRecipe() {
                 >
                   <p>Essa ação não poderá ser desfeita!</p>
                 </Modal>
-              </>
+              </div>
             )}
           </div>
 

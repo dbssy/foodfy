@@ -107,6 +107,7 @@ const RecipeForm = forwardRef(({ headerLabel, buttonLabel, onSubmit }, ref) => {
               <FormGroup error={getErrorMessageByFieldName('difficulty')}>
                 <label htmlFor="difficulty">Dificuldade</label>
                 <Select
+                  id="difficulty"
                   value={difficulty}
                   onChange={handleDifficultyChange}
                   error={getErrorMessageByFieldName('difficulty')}
@@ -138,7 +139,7 @@ const RecipeForm = forwardRef(({ headerLabel, buttonLabel, onSubmit }, ref) => {
 
             <div>
               <FormGroup error={getErrorMessageByFieldName('servings')}>
-                <label htmlFor="servings">Rendimento (em porções)</label>
+                <label htmlFor="servings">Rendimento</label>
                 <Input
                   id="servings"
                   type="number"
@@ -153,7 +154,7 @@ const RecipeForm = forwardRef(({ headerLabel, buttonLabel, onSubmit }, ref) => {
           </div>
 
           <div className="two-columns">
-            <div>
+            <div className="ingredients">
               <FormGroup error={getErrorMessageByFieldName('ingredient')}>
                 <label>Ingredientes</label>
 
@@ -188,7 +189,7 @@ const RecipeForm = forwardRef(({ headerLabel, buttonLabel, onSubmit }, ref) => {
               </FormGroup>
             </div>
 
-            <div>
+            <div className="instructions">
               <FormGroup error={getErrorMessageByFieldName('instruction')}>
                 <label>Instruções</label>
 

@@ -7,6 +7,8 @@ export const Content = styled(DropdownMenu.Content)`
   border-radius: 0.25rem;
   width: 12rem;
   padding: 1rem 0;
+  z-index: 2;
+  position: relative;
 
   .separator {
     background-color: ${({ theme }) => theme.colors.gray[100]};

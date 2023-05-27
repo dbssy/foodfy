@@ -8,10 +8,11 @@ export const Section = styled.section`
     padding-bottom: 2rem;
 
     .details {
+      width: 100%;
+      margin-bottom: 1rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 1rem;
 
       h2 {
         font-size: 2rem;
@@ -20,34 +21,43 @@ export const Section = styled.section`
 
       p {
         color: ${({ theme }) => theme.colors.gray[500]};
-        width: 70rem;
         line-height: 1.5;
       }
 
-      a {
-        color: ${({ theme }) => theme.colors.primary[500]};
-        font-weight: 500;
+      .actions {
+        display: flex;
+        gap: 0.5rem;
 
-        &:hover {
-          color: ${({ theme }) => theme.colors.primary[300]};
-          transition: color 0.2s ease-in;
+        a {
+          color: ${({ theme }) => theme.colors.primary[500]};
+          font-weight: 500;
+
+          &:hover {
+            color: ${({ theme }) => theme.colors.primary[300]};
+            transition: color 0.2s ease-in;
+          }
+        }
+
+        button {
+          color: ${({ theme }) => theme.colors.danger[500]};
+          font-weight: 500;
+
+          &:hover {
+            color: ${({ theme }) => theme.colors.danger[300]};
+            transition: color 0.2s ease-in;
+          }
         }
       }
 
-      button {
-        color: ${({ theme }) => theme.colors.danger[500]};
-        font-weight: 500;
-
-        &:hover {
-          color: ${({ theme }) => theme.colors.danger[300]};
-          transition: color 0.2s ease-in;
-        }
+      @media screen and (min-width: 320px) and (max-width: 500px) {
+        flex-direction: column;
+        gap: 1.5rem;
       }
     }
 
     img {
       border-radius: 0.25rem;
-      width: 88rem;
+      width: 100%;
       height: 20rem;
       object-fit: cover;
     }
@@ -79,6 +89,11 @@ export const Section = styled.section`
             }
           }
         }
+      }
+
+        @media screen and (min-width: 320px) and (max-width: 500px) {
+          flex-direction: column;
+          gap: 1.5rem;
       }
     }
   }
@@ -176,6 +191,11 @@ export const RecipeBody = styled.article`
           }
         }
       }
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 500px) {
+      flex-direction: column;
+      gap: 1.5rem;
     }
   }
 `;

@@ -20,6 +20,17 @@ export const Section = styled.section`
     align-items: center;
     justify-content: space-between;
   }
+
+  @media screen and (max-width: 730px) {
+    header {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    form {
+      width: 80%;
+    }
+  }
 `;
 
 export const Actions = styled.div`

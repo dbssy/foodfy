@@ -6,6 +6,10 @@ export const Container = styled.main`
   justify-content: center;
   gap: 2rem;
   margin-top: 5rem;
+
+  @media screen and (max-width: 780px) {
+    flex-direction: column;
+  }
 `;
 
 export const Form = styled.form`
